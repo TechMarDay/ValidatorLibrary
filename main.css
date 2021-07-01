@@ -43,6 +43,10 @@
     margin-bottom: 16px;
     flex-direction: column;
   }
+
+  .form-group.horizontal{
+    flex-direction: row;
+  }
   
   .form-label,
   .form-message {

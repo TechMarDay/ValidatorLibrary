@@ -39,6 +39,40 @@
             <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
             <span class="form-message"></span>
           </div>
+
+          <div class="form-group">
+            <label for="gender" class="form-label">Giới tính</label>
+            <div>
+              <input name="gender" type="checkbox" value="male" class="form-control">
+              <span>Nam</span>
+            </div>
+            <div>
+              <input name="gender" type="checkbox" value="female" class="form-control">
+              <span>Nữ</span>
+            </div>
+            <div>
+              <input name="gender" type="checkbox" value="others" class="form-control">
+              <span>Khác</span>
+            </div>
+            <span class="form-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="avatar" class="form-label">Anh dai dien</label>
+            <input id="avatar" name="avatar" type="file" class="form-control">
+            <span class="form-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="province" class="form-label">Tinh/Tp</label>
+              <select name="province" class="form-control" id="province">
+                <option value="">Chọn tỉnh/Tp</option>
+                <option value="hni">Hà Nội</option>
+                <option value="hpg">Hải Phòng</option>
+
+              </select> 
+            <span class="form-message"></span>
+          </div>
       
           <button class="form-submit">Đăng ký</button>
         </form>
@@ -50,20 +84,24 @@
 
           Validator({
               form: '#form-1',
+              formGroupSelector: '.form-group',
               errorSelector: '.form-message',
               rules: [
                   Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
                   Validator.isRequired('#email'),
                   Validator.isEmail('#email'),
                   Validator.minLength('#password', 6),
+                  Validator.isRequired('input[name="gender"]'),
+                  Validator.isRequired('#province'),
+                  Validator.isRequired('#avatar'),
                   Validator.isRequired('#password_confirmation'),
                   Validator.isConfirmed('#password_confirmation', function(){
                     return document.querySelector('#form-1 #password').value;
                   }, 'Mật khẩu nhập lại không chính xác')
-              ]
-              // onSubmit: function(data){
-              //   console.log(data);
-              // }
+              ],
+              onSubmit: function(data){
+                console.log(data);
+              }
           });
       </script>
 </body>
