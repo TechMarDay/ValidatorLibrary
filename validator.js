@@ -69,7 +69,6 @@ function Validator(options){
             if(isFormValid){
                 //Trường hợp submit với Javascript
                 if(typeof options.onSubmit === 'function'){
-                    debugger;
                     var enableInputs = formElement.querySelectorAll('[name]:not([disabled])');
                     var formValues = Array.from(enableInputs).reduce(function(values, input){
                         switch(input.type){
